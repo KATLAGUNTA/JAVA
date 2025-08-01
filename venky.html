@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration & Login Form</title>
+    <style>
+        /* CSS code */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 50px;
+            font-weight: bold;
+            color: #333;
+        }
+        .navigation a {
+            margin: 0 20px;
+            text-decoration: none;
+            color: #333;
+        }
+        .login {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .wrapper {
+            width: 100%;
+            max-width: 400px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 100px;
+        }
+        .form-box h2 {
+            margin-bottom: 20px;
+            color: #333;
+            font-weight: bold;
+            text-align: center;
+        }
+        .input-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .input-box input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            outline: none;
+            transition: 0.3s;
+        }
+        .input-box label {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            background: #fff;
+            padding: 0 5px;
+            color: #999;
+            pointer-events: none;
+            transition: 0.3s;
+        }
+        .input-box input:focus + label,
+        .input-box input:valid + label {
+            top: -10px;
+            left: 10px;
+            color: #4CAF50;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .remember-forgot a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .login-register {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .login-register a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        #message {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h2 class="logo">Logo</h2>
+        <nav class="navigation">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+            <button class="login" onclick="showLoginForm()">Login</button>
+        </nav>
+    </header>
+    <div class="wrapper" id="formWrapper">
+        <div class="form-box" id="registrationFormBox">
+            <h2>Register</h2>
+            <form id="registrationForm">
+                <div class="input-box">
+                    <input type="text" id="firstName" required>
+                    <label for="firstName">First Name</label>
+                </div>
+                <div class="input-box">
+                    <input type="text" id="middleName" required>
+                    <label for="middleName">Middle Name</label>
+                </div>
+                <div class="input-box">
+                    <input type="text" id="lastName" required>
+                    <label for="lastName">Last Name</label>
+                </div>
+                <div class="input-box">
+                    <input type="text" id="college" required>
+                    <label for="college">College</label>
+                </div>
+                <div class="input-box">
+                    <input type="text" id="city" required>
+                    <label for="city">City</label>
+                </div>
+                <div class="input-box">
+                    <input type="text" id="mobileNumber" required>
+                    <label for="mobileNumber">Mobile Number</label>
+                </div>
+                <div class="input-box">
+                    <input type="text" id="branch" required>
+                    <label for="branch">Branch</label>
+                </div>
+                <div class="input-box">
+                    <input type="text" id="username" required>
+                    <label for="username">Username</label>
+                </div>
+                <div class="input-box">
+                    <input type="password" id="password" required>
+                    <label for="password">Password</label>
+                </div>
+                <button type="submit" class="btn">Register</button>
+            </form>
+            <p id="message"></p>
+        </div>
+        <div class="form-box" id="loginFormBox" style="display:none;">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="input-box">
+                    <input type="text" id="loginUsername" required>
+                    <label for="loginUsername">Username</label>
+                </div>
+                <div class="input-box">
+                    <input type="password" id="loginPassword" required>
+                    <label for="loginPassword">Password</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox"> Remember me</label>
+                    <a href="#">Forgot password?</a>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <div class="login-register">
+                    <p>Don't have an account? <a href="#" onclick="showRegisterForm()">Register</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="form-box" id="welcomeBox" style="display:none;">
+            <h2>Welcome!</h2>
+            <p>You are logged in!</p>
+            <img src="https://via.placeholder.com/150" alt="Welcome Image">
+        </div>
+    </div>
+    <script>
+        // JavaScript code
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const firstName = document.getElementById('firstName').value;
+            const middleName = document.getElementById('middleName').value;
+            const lastName = document.getElementById('lastName').value;
+            const college = document.getElementById('college').value;
+            const city = document.getElementById('city').value;
+            const mobileNumber = document.getElementById('mobileNumber').value;
+            const branch = document.getElementById('branch').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const message = document.getElementById('message');
+
+            if (firstName && lastName && college && city && mobileNumber && branch && username && password) {
+                // Simulate successful registration (e.g., store data in local storage or send to a server)
+                localStorage.setItem('firstName', firstName);
+                localStorage.setItem('middleName', middleName);
+                localStorage.setItem('lastName', lastName);
+                localStorage.setItem('college', college);
+                localStorage.setItem('city', city);
+                localStorage.setItem('mobileNumber', mobileNumber);
+                localStorage.setItem('branch', branch);
+                localStorage.setItem('username', username);
+                localStorage.setItem('password', password);
+                message.textContent = 'Registration successful!';
+                message.style.color = 'green';
+                showLoginForm();
+            } else {
+                message.textContent = 'Please fill out all required fields.';
+                message.style.color = 'red';
+            }
+        });
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const loginUsername = document.getElementById('loginUsername').value;
+            const loginPassword = document.getElementById('loginPassword').value;
+            const message = document.getElementById('message');
+
+            const storedUsername = localStorage.getItem('username');
+            const storedPassword = localStorage.getItem('password');
+
+            if (loginUsername === storedUsername && loginPassword === storedPassword) {
+                message.textContent = 'Login successful!';
+                message.style.color = 'green';
+                showWelcomeBox();
+            } else {
+                message.textContent = 'Invalid username or password.';
+                message.style.color = 'red';
+            }
+        });
+
+        function showLoginForm() {
+            document.getElementById('registrationFormBox').style.display = 'none';
+            document.getElementById('loginFormBox').style.display = 'block';
+            document.getElementById('welcomeBox').style.display = 'none';
+        }
+
+        function showRegisterForm() {
+            document.getElementById('loginFormBox').style.display = 'none';
+            document.getElementById('registrationFormBox').style.display = 'block';
+            document.getElementById('welcomeBox').style.display = 'none';
+        }
+
+        function showWelcomeBox() {
+            document.getElementById('registrationFormBox').style.display = 'none';
+            document.getElementById('loginFormBox').style.display = 'none';
+            document.getElementById('welcomeBox').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
